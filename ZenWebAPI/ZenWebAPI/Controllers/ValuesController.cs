@@ -13,8 +13,9 @@ namespace ZenWebAPI.Controllers
 {
     public class ValuesController : ApiController
     {
+
         [AllowAnonymous]
-        [Route("signin/jsonbody")]
+        [Route("userlogin/jsonbody")]
         [HttpPost]
         public IHttpActionResult jsonbody([FromBody] JObject data)
         {
@@ -65,10 +66,20 @@ namespace ZenWebAPI.Controllers
             payloads["userid"] = "AEZEN";
             payloads["username"] = model.username;
             payloads["password"] = model.password;
+            payloads["SAMPLESTRING"] = "GORDONRAMSAY";
             payloads["link"] = "../landing/index.html";
 
             string token = JwtManager.GenerateToken(payloads);
             return Ok(token);
+        }
+
+        [Authorizations]
+        [Route("users/create")]
+        [HttpPost]
+        public IHttpActionResult createuser([FromBody] LoginDTO model)
+        {
+                //Logic here
+            return Ok();
         }
 
 
