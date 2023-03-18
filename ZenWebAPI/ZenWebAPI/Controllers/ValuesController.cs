@@ -15,7 +15,7 @@ namespace ZenWebAPI.Controllers
     {
 
         [AllowAnonymous]
-        [Route("userlogin/jsonbody")]
+        [Route("signin/jsonbody")]
         [HttpPost]
         public IHttpActionResult jsonbody([FromBody] JObject data)
         {
@@ -73,16 +73,11 @@ namespace ZenWebAPI.Controllers
             return Ok(token);
         }
 
-        [Authorizations]
-        [Route("users/create")]
-        [HttpPost]
-        public IHttpActionResult createuser([FromBody] LoginDTO model)
-        {
-                //Logic here
-            return Ok();
-        }
 
-
+        /// <summary>
+        /// Retrieves a list of all products.
+        /// </summary>
+        /// <returns>A list of products.</returns>
         [Authorizations]
         [HttpGet]
         [Route("user/types")]

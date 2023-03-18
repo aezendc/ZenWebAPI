@@ -3,6 +3,9 @@ using WebActivatorEx;
 using ZenWebAPI;
 using Swashbuckle.Application;
 using ZenWebAPI.Filter;
+using System.IO;
+using System.Reflection;
+using System;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -179,6 +182,10 @@ namespace ZenWebAPI
                         //c.CustomProvider((defaultProvider) => new CachingSwaggerProvider(defaultProvider));
 
                         c.OperationFilter<AuthorizationHeaderParameterOperationFilter>();
+
+                        var xmlFile = $"bin/{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                        c.IncludeXmlComments(xmlPath);
                     })
                 .EnableSwaggerUi(c =>
                     {
