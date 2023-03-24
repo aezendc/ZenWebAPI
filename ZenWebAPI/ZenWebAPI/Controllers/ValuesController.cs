@@ -14,6 +14,22 @@ namespace ZenWebAPI.Controllers
     public class ValuesController : ApiController
     {
 
+        /// <summary>
+        /// User SignIn using JSON
+        /// </summary>
+        /// <returns>Sign in using json body</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST signin/jsonbody
+        ///     {
+        ///        "username": "username",
+        ///        "password": "password"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the bearer token</response>
+        /// <response code="400">If the item is null</response>
         [AllowAnonymous]
         [Route("signin/jsonbody")]
         [HttpPost]
@@ -36,6 +52,23 @@ namespace ZenWebAPI.Controllers
             return Ok(token);
         }
 
+        /// <summary>
+        /// User SignIn using JSON
+        /// </summary>
+        /// <returns>Sign in using json body</returns>
+        /// <remarks>
+        /// Sample request:
+        /// THIS IS A TEST TEXT
+        ///
+        ///     POST signin/bodyparams
+        ///     {
+        ///        "username": "username",
+        ///        "password": "password"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the bearer token</response>
+        /// <response code="400">If the item is null</response>
         [AllowAnonymous]
         [Route("signin/bodyparams")]
         [HttpPost]
@@ -54,6 +87,22 @@ namespace ZenWebAPI.Controllers
             return Ok(token);
         }
 
+        /// <summary>
+        /// User SignIn using JSON
+        /// </summary>
+        /// <returns>Sign in using json body</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST signin/bodymodel
+        ///     {
+        ///        "username": "username",
+        ///        "password": "password"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="200">Returns the bearer token</response>
+        /// <response code="400">If the item is null</response>
         [AllowAnonymous]
         [Route("signin/bodymodel")]
         [HttpPost]
@@ -75,8 +124,19 @@ namespace ZenWebAPI.Controllers
 
 
         /// <summary>
-        /// Retrieves a list of all products.
+        /// Get All the Values
         /// </summary>
+        /// <remarks>
+        /// Get All the String Values
+        ///
+        /// GET /api/values HTTP/1.1
+        /// 
+        /// Host: example.com
+        /// 
+        /// Authorization: Bearer "token"
+        /// 
+        /// 
+        /// </remarks>
         /// <returns>A list of products.</returns>
         [Authorizations]
         [HttpGet]

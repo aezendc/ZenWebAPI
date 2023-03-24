@@ -183,9 +183,13 @@ namespace ZenWebAPI
 
                         c.OperationFilter<AuthorizationHeaderParameterOperationFilter>();
 
-                        var xmlFile = $"bin/{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                        c.IncludeXmlComments(xmlPath);
+
+                        c.IncludeXmlComments(string.Format(@"{0}\bin\ZenWebAPI.xml",
+                                             System.AppDomain.CurrentDomain.BaseDirectory));
+
+                        //var xmlFile = $"bin/{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                        //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                        //c.IncludeXmlComments(xmlPath);
                     })
                 .EnableSwaggerUi(c =>
                     {
